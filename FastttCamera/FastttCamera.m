@@ -658,11 +658,16 @@
 
 - (UIDeviceOrientation)_currentPreviewDeviceOrientation
 {
-    if (!self.interfaceRotatesWithOrientation) {
-        return self.fixedInterfaceOrientation;
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+
+    if (orientation == UIDeviceOrientationLandscapeLeft) {
+        
+        return UIDeviceOrientationLandscapeLeft;
+        
+    } else {
+        
+        return UIDeviceOrientationLandscapeRight;
     }
-    
-    return [[UIDevice currentDevice] orientation];
 }
 
 - (AVCaptureVideoOrientation)_currentPreviewVideoOrientationForDevice
